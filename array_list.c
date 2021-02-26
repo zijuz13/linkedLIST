@@ -3,7 +3,8 @@ ArrayList* alist_initialize(int maxSize, int typeSize, char* name){
   ArrayList* list= (ArrayList*) malloc(sizeof(ArrayList));
   list->maxSize=maxSize;
   list->size=0;
-  list->type=name;
+  list->type=malloc(strlen(name)*sizeof(char));
+  strcpy(list->type,name);
   list->itemSize=typeSize;
   //allocate continuous memory blocks for the 2-D pointer to point
   list->arr=calloc(maxSize,sizeof(void*));
@@ -125,7 +126,7 @@ if(NULL!=list->arr){
        free(list->arr[i]);
     //    list->arr[i]=NULL; 
     }
-    free(list->arr);
+   // free(list->arr);
     list->arr=NULL;
 }
 free(list);
