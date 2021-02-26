@@ -179,4 +179,5 @@ bool llist_destroy(LinkedList* list){
    list->type=NULL;
    free(list);
    list=NULL;
+   return true;
 }
