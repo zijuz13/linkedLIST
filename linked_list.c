@@ -28,6 +28,9 @@ bool checkIndex(int size,int index){
     return true;
 }
 bool llist_add_at(LinkedList* list, int index, void* elem){
+    if(NULL==list){
+        return false;
+    }
       Node* node=initializeANode(list,elem);
       if(!checkIndex(list->size,index)){
           return false;
@@ -71,12 +74,17 @@ bool llist_add_at(LinkedList* list, int index, void* elem){
       }
 }
 bool llist_add_first(LinkedList* list, void* elem){
+     if(list==NULL)return false;
    return llist_add_at(list,0,elem);
 }
 bool llist_add_last(LinkedList* list, void* elem){
+    if(list==NULL)return false;
     return llist_add_at(list,list->size,elem);
 }
 void* llist_get(LinkedList* list, int index){
+        if(NULL==list){
+        return NULL;
+    }
 Node* temp=list->first;
 int count=0;
 while(NULL!=temp){
@@ -89,6 +97,9 @@ while(NULL!=temp){
 return NULL;
 }
 void* llist_get1(LinkedList* list, int index){
+        if(NULL==list){
+        return NULL;
+    }
 Node* temp=list->first;
 int count=0;
 while(NULL!=temp){
@@ -101,6 +112,9 @@ while(NULL!=temp){
 return NULL;
 }
 int llist_index_of(LinkedList* list, void* elem){
+        if(NULL==list){
+        return -1;
+    }
   int count=0;
   Node* node=list->first;
   while(NULL!=node){
@@ -116,6 +130,9 @@ int llist_index_of(LinkedList* list, void* elem){
   return -1;
 }
 void* llist_remove(LinkedList* list, int index){
+    if(NULL==list){
+        return  NULL;
+    }
   Node* node=llist_get1(list,index);
   if(NULL==node){
       return NULL;
