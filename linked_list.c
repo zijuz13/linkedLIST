@@ -153,9 +153,11 @@ void* llist_remove(LinkedList* list, int index){
   return node;
 }
 void* llist_remove_first(LinkedList* list){
+    if(NULL==list)return NULL;
   return llist_remove(list,0);
 }
 void* llist_remove_last(LinkedList* list){
+    if(NULL==list)return NULL;
     return llist_remove(list,list->size-1);
 }
 bool llist_destroy(LinkedList* list){
