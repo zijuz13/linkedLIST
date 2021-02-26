@@ -123,6 +123,7 @@ bool alist_destroy(ArrayList* list){
     list->type=NULL;
 if(NULL!=list->arr){
     for(int i=0;i<list->size;++i){
+       if(NULL!=list->arr[i])
        free(list->arr[i]);
     //    list->arr[i]=NULL; 
     }
