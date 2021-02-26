@@ -5,7 +5,8 @@ LinkedList* llist_initialize(int itemSize, char* typeName){
   list->last=NULL;
   list->itemSize=itemSize;
   list->size=0;
-  list->type=typeName;
+  list->type=malloc(strlen(typeName)*sizeof(char));
+  strcpy(list->type,typeName);
   return list;
 }
 //Will initialize a Node with element value
@@ -161,6 +162,7 @@ void* llist_remove_last(LinkedList* list){
     return llist_remove(list,list->size-1);
 }
 bool llist_destroy(LinkedList* list){
+    if(NULL==list)return false;
    Node* temp=list->first;
    Node* next=NULL;
    while(NULL!=temp){
