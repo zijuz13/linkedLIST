@@ -65,7 +65,7 @@ void* queue_peek(Queue* queue){
 if(checkNullPointer(queue)){
     return NULL;
 }
-return NULL!=queue->last?queue->last->data:NULL;
+return NULL!=queue->head?queue->head->data:NULL;
 }
 int queue_size(Queue* queue){
     if(checkNullPointer(queue)){
