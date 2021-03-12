@@ -1,0 +1,36 @@
+    public ListNode reverseKGroup(ListNode head, int k) {
+       int n=1;
+       int size=lengthListNode(head);
+       while(Math.pow(2,n)*k<size){
+           ++n;
+       }
+       int remaining=(int) (size-Math.pow(2,n-1)*k);
+       
+    }
+    public ListNode reverseGroup(ListNode node,int k,int n){
+        if(n==k){
+            ListNode newHead=new ListNode(0);
+            ListNode next=null;
+            for(int i=1;i<=k;++i){
+                next=node.next;
+                node.next=newHead.next;
+                newHead.next=node;
+                node=next;
+            }
+            return newHead.next;
+        }
+        ListNode node2=null;
+        for(int i=1;i<=n/2+1;++i){
+            if(1==i)node2=node;
+            node2=node2.next;
+        }
+        ListNode head1=this.reverseGroup(node,k,n/2);
+        ListNode head2=this.reverseGroup(node2,k,n/2);
+        node2=head1;
+        for(int i=1;i<=n/2;++i){
+            if(1==i)node2=node;
+            node2=node2.next;
+        }
+        node2.next=head2;
+        return head1;
+    }
