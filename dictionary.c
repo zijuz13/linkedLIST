@@ -443,19 +443,6 @@ if(tree->top==NULL){
     return _bintree_insert_replace_recursive(tree,tree->top,data);
 }
 }
- int compareDict ( void * a, void * b)
-{
-if(a == NULL || b == NULL )
- return false ;
-char* keyA = ((Pair*)a)->first;
-char* keyB = ((Pair*)b)->first ;
- return strcmp (keyB , keyA );
-}
-
- void printDict ( void * a)
- {
- printf ("%s\n", ( char *)((Pair*) a)->first);
- }
 //ArrayList Definition
 ArrayList* alist_initialize(int maxSize, int typeSize, char* name){
   ArrayList* list= (ArrayList*) malloc(sizeof(ArrayList));
@@ -579,18 +566,6 @@ bool alist_resize(ArrayList* list){
  list->maxSize*=2;
  list->arr=realloc(list->arr,list->maxSize*sizeof(void*));
  return true;   
-}
-
-void printList(ArrayList* list){
-printf("%s\n",list->type);
-printf("%d\n",list->maxSize);
-printf("%d\n",list->size);
-printf("%d\n",list->itemSize);
-}
-void iterateAllElements(ArrayList* list){
-int size=list->size;
-for(int i=0;i<size;++i){
-    printf("%d\n",*((int*)list->arr[i]));
 }
 }
 //ArrayList Defintion
