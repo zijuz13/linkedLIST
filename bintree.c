@@ -89,7 +89,7 @@ void bintree_print_reverse_order(BinaryTree* tree){
     }
 }
 bool _bintree_insert_recursive(BinaryTree* tree, BinaryTreeNode* node, void* data){
-if(data==NULL){
+if(tree==NULL||node==NULL||data==NULL){
     return false;
 }
 int (*compare)(void*,void*)=tree->compare;
