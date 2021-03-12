@@ -41,7 +41,6 @@ void bintree_print_in_order(BinaryTree*);
 void bintree_print_pre_order(BinaryTree*);
 void bintree_print_post_order(BinaryTree*);
 void bintree_print_reverse_order(BinaryTree*);
-bool _bintree_insert_recursive(BinaryTree*, BinaryTreeNode*, void*);
 bool _bintree_search_recursive(BinaryTree*, BinaryTreeNode*, void*);
 void _bintree_in_order_recursive(BinaryTree*, BinaryTreeNode*);
 void _bintree_pre_order_recursive(BinaryTree*, BinaryTreeNode*);
