@@ -32,7 +32,7 @@ if(tree->top==NULL){
     tree->top=bintree_create_node(tree->itemSize,data);
     return true;
 }else{
-    return _bintree_insert_recursive(tree,tree->top,data);
+    return _bintree_insert_replace_recursive(tree,tree->top,data);
 }
 }
 bool bintree_search(BinaryTree* tree, void* data){
@@ -88,27 +88,6 @@ void bintree_print_reverse_order(BinaryTree* tree){
         _bintree_reverse_order_recursive(tree,tree->top);
     }
 }
-bool _bintree_insert_recursive(BinaryTree* tree, BinaryTreeNode* node, void* data){
-if(tree==NULL||node==NULL||data==NULL){
-    return false;
-}
-int (*compare)(void*,void*)=tree->compare;
-if(compare(node->data,data)<0){
-if(NULL==node->left){
-    node->left=bintree_create_node(tree->itemSize,data);
-    return true;
-}else{
-    return _bintree_insert_recursive(tree,node->left,data);
-}
-}else{
-if(NULL==node->right){
-    node->right=bintree_create_node(tree->itemSize,data);
-    return true;
-}else{
-    return _bintree_insert_recursive(tree,node->right,data);
-}
-}
-}
 bool _bintree_search_recursive(BinaryTree* tree, BinaryTreeNode* node, void* data){
     if(node==NULL){
         return false;
@@ -132,7 +111,7 @@ void _bintree_in_order_recursive(BinaryTree* tree, BinaryTreeNode* node){
         _bintree_in_order_recursive(tree,node->right);
     }
 }
-void _bintree_pre_order_recursive(BinaryTree* tree, BinaryTreeNode* node){\
+void _bintree_pre_order_recursive(BinaryTree* tree, BinaryTreeNode* node){
     void (*print)(void*)=tree->print;
     print(node->data);
         if(NULL!=node->left){
@@ -443,5 +422,3 @@ if(0==compare(node->data,data)){
     }
 }
 }
-
-
