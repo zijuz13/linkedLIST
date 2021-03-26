@@ -28,5 +28,6 @@ for(int i=0;i<n;++i){
     args.end=i*groups+groups;
     }
     pthread_create(&thread,NULL,fill,&args);
+    pthread_join(&thread,NULL);
 }
 }
