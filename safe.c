@@ -13,7 +13,7 @@ void count_variable(int n){
     sem_init(&flag,0,1);
     Counter* counter=malloc(sizeof(Counter));
     counter->counter=0;
-    pthread_t* thread1=malloc(n*sizeof(pthread_t));
+    pthread_t* thread1[1000];
     for(int i=0;i<1000;++i){
     pthread_create((thread1+i),NULL,counting,counter);
     }
