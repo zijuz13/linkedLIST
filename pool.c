@@ -1,4 +1,3 @@
-
 #include "pool.h"
 //Operators Definitions:
 int add(int a,int b){
@@ -348,15 +347,18 @@ ArrayList* execute_thread_pool(char* file_name, int max_num){
     }
     int count=0;
     int i=0;
-     ArrayList* indexList=alist_initialize(max_num,sizeof(int),"INTEGER");
+    int* arr=malloc(max_num*sizeof(int));
+    for(int i=0;i<max_num;++i){
+        *(arr+i)=0;
+    }
     while(true){
      Args* args=(Args*)alist_get(argsList,i);
-     if(args->is_complete&&(-1==alist_index_of(indexList,&i))){
+     if(args->is_complete&&(*(arr+i)==0)){
          count++;
          int* result=NULL;
          pthread_join(*(threads+i),(void**)&result);
          alist_add(list,result);
-         alist_add(list,&i);
+         *(arr+i)=3;
      }
      if(count==max_num){
          break;
