@@ -18,8 +18,6 @@ void count_variable(int n){
     pthread_t* thread1=malloc(n*sizeof(pthread_t));
     for(int i=0;i<n;++i){
     pthread_create((thread1+i),NULL,counting,counter);
-    }
-    for(int i=0;i<n;++i){
-        pthread_join(*(thread1+i),NULL);
+      pthread_join(*(thread1+i),NULL);
     }
 }
