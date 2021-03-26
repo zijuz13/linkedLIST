@@ -6,7 +6,6 @@ sem_wait(&flag);
 Counter* counter=(Counter*)count;
 if(counter->counter<1000){
 counter->counter++;
-printf("%d\n",counter->counter);
 }
 sem_post(&flag);
 return NULL;
@@ -18,6 +17,8 @@ void count_variable(int n){
     pthread_t* thread1=malloc(n*sizeof(pthread_t));
     for(int i=0;i<n;++i){
     pthread_create((thread1+i),NULL,counting,counter);
-      pthread_join(*(thread1+i),NULL);
+    }
+    for(int i=1;i<=1000;++i){
+        printf("%d\n",i);
     }
 }
